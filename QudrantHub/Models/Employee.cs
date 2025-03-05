@@ -15,7 +15,7 @@ namespace QudrantHub.Models
         [EmailAddress]
         public string? AnotherEmail { get; set; }
         [Required]
-        [MinLength(8)]
+        [MinLength(8, ErrorMessage = "Password length must be at least 8 characters")]
         public string Password { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime DOB { get; set; }

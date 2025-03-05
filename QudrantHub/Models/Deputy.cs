@@ -13,5 +13,8 @@ namespace QudrantHub.Models
         public string DirectorEmail { get; set; }
         [Required]
         public string DirectorPhone { get; set; }
+        [Required]
+        [MinLength(8, ErrorMessage = "Password length must be at least 8 characters")]
+        public string DirectorPassword {  get; set; }
     }
 }

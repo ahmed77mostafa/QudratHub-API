@@ -15,7 +15,7 @@ namespace QudrantHub.Models
         [Phone]
         public string Phone { get; set; }
         [Required]
-        [MinLength(8)]
+        [MinLength(8, ErrorMessage = "Password length must be at least 8 characters")]
         public string Password { get; set; }
     }
 }
