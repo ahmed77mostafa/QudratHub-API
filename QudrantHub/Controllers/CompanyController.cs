@@ -16,7 +16,7 @@ namespace QudrantHub.Controllers
         {
             _companyRepo = companyRepo;
         }
-        [HttpPost]
+        [HttpPost("SignUp")]
         public IActionResult PostCompany(CompanyDTO companyDTO)
         {
             var message = _companyRepo.SignUp(companyDTO) ?
@@ -28,7 +28,7 @@ namespace QudrantHub.Controllers
             return Ok(new { message, status });
         }
         [HttpPost("Login")]
-        public IActionResult Login(string Email, string Password)
+        public IActionResult CompanyLogin(string Email, string Password)
         {
             bool result = _companyRepo.Login(Email, Password);
             string message = result ?
@@ -39,31 +39,39 @@ namespace QudrantHub.Controllers
                 "Failed";
             return Ok(new { message, status });
         }
-        [HttpDelete]
-        public IActionResult DeleteAll()
+        [HttpPost("ForgetPassword")]
+        public IActionResult CompanyForgetPassword(string Email, string Password)
+        {
+            var result = _companyRepo.ForgetPassowrd(Email, Password);
+            string message = result ? "Password changed successfully" : "Failed to change password";
+            string status = result ? "Success" : "Failed";
+            return Ok(new { message, status });
+        }
+        [HttpDelete("DeleteAll")]
+        public IActionResult DeleteAllCompanies()
         {
             bool result = _companyRepo.DeleteAll();
             string message = result ? "All companies deleted successfully" : "Can't find companies to delete";
             string status = result ? "Success" : "Failed";
             return Ok(new { message, status });
         }
-        [HttpDelete("{Id}")]
-        public IActionResult DeleteById(int Id)
+        [HttpDelete("DeleteById{Id}")]
+        public IActionResult DeleteCompanyById(int Id)
         {
             bool result = _companyRepo.DeleteById(Id);
             string message = result ? $"Company {Id} deleted successfully" : $"Can't find company with ID: {Id}";
             string status = result ? "Success" : "Failed";
             return Ok(new { message, status });
         }
-        [HttpGet]
-        public IActionResult GetAll()
+        [HttpGet("GetAll")]
+        public IActionResult GetAllCompanies()
         {
             var result = _companyRepo.GetAll();
             string message = result == null ? "Can't find any company" : "Companies found successfully";
             string status = result == null ? "Failed" : "Success";
             return Ok(new { message, status, result });
         }
-        [HttpGet("{Id}")]
+        [HttpGet("GetById{Id}")]
         public IActionResult GetCompanyById(int Id)
         {
             var result = _companyRepo.GetById(Id);
@@ -71,7 +79,7 @@ namespace QudrantHub.Controllers
             string status = result == null ? "Failed" : "Success";
             return Ok(new { message, status, result });
         }
-        [HttpPut("{Id}")]
+        [HttpPut("Update/{Id}")]
         public IActionResult UpdateCompany(int Id, CompanyDTO companyDTO)
         {
             bool result = _companyRepo.Update(Id, companyDTO);
