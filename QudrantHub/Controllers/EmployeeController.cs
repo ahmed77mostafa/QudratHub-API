@@ -46,7 +46,7 @@ namespace QudrantHub.Controllers
         public IActionResult DeleteById(int Id)
         {
             bool result = _employeeRepo.DeleteById(Id);
-            string message = result ? "Employee deleted successfully" : $"Can't find employee with ID: {Id}";
+            string message = result ? $"Employee {Id} deleted successfully" : $"Can't find employee with ID: {Id}";
             string status = result ? "Success" : "Failed";
             return Ok(new { message, status });
         }
@@ -78,7 +78,7 @@ namespace QudrantHub.Controllers
         public IActionResult UpdateEmployee(int Id, EmployeeDTO employeeDTO)
         {
             bool result = _employeeRepo.Update(Id, employeeDTO);
-            string message = result ? "Employee updated successfully" : $"Can't find employee with ID: {Id}";
+            string message = result ? $"Employee {Id} updated successfully" : $"Can't find employee with ID: {Id}";
             string status = result ? "Success" : "Failed";
             return Ok(new { message, status });
         }

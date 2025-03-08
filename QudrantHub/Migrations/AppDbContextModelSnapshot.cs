@@ -33,7 +33,7 @@ namespace QudrantHub.Migrations
 
                     b.HasIndex("EmployeesId");
 
-                    b.ToTable("CompanyEmployee");
+                    b.ToTable("CompanyEmployee", (string)null);
                 });
 
             modelBuilder.Entity("QudrantHub.Models.Company", b =>
@@ -101,7 +101,7 @@ namespace QudrantHub.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Companies");
+                    b.ToTable("Companies", (string)null);
                 });
 
             modelBuilder.Entity("QudrantHub.Models.Employee", b =>
@@ -153,7 +153,7 @@ namespace QudrantHub.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employees", (string)null);
                 });
 
             modelBuilder.Entity("CompanyEmployee", b =>

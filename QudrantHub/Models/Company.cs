@@ -26,6 +26,7 @@ namespace QudrantHub.Models
         [EmailAddress]
         public string AdminEmail { get; set; }
         [Required]
+        [Phone]
         public string AdminPhone { get; set; }
         [Required]
         [MinLength(6, ErrorMessage = "Admin Password length must be at least 6 characters")]
@@ -38,11 +39,12 @@ namespace QudrantHub.Models
         [EmailAddress]
         public string DirectorEmail { get; set; }
         [Required]
+        [Phone]
         public string DirectorPhone { get; set; }
         [Required]
         [MinLength(6, ErrorMessage = "Password length must be at least 6 characters")]
         public string DirectorPassword { get; set; }
-
+ 
         public IList<Employee> Employees { get; set; }
     }
 }

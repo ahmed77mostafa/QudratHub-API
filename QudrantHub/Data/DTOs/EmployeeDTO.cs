@@ -15,6 +15,7 @@ namespace QudrantHub.Data.DTOs
         [Required]
         [MinLength(8, ErrorMessage = "Password length must be at least 8 characters")]
         public string Password { get; set; }
+        [Phone]
         public string PhoneNumber { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
