@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using QudrantHub.Data;
+using QudrantHub.Repository.Implementation;
+using QudrantHub.Repository.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
                     builder.Configuration.GetConnectionString("Connection")));
+
+//builder.Services.AddScoped<ICompanyRepo, CompanyRepo>();
+builder.Services.AddScoped<IEmployeeRepo, EmployeeRepo>();
 
 var app = builder.Build();
 
