@@ -55,7 +55,7 @@ namespace QudrantHub.Controllers
             string status = result ? "Success" : "Failed";
             return Ok(new { message, status });
         }
-        [HttpDelete("DeleteById{Id}")]
+        [HttpDelete("DeleteById/{Id}")]
         public IActionResult DeleteCompanyById(int Id)
         {
             bool result = _companyRepo.DeleteById(Id);
@@ -71,7 +71,7 @@ namespace QudrantHub.Controllers
             string status = result == null ? "Failed" : "Success";
             return Ok(new { message, status, result });
         }
-        [HttpGet("GetById{Id}")]
+        [HttpGet("GetById/{Id}")]
         public IActionResult GetCompanyById(int Id)
         {
             var result = _companyRepo.GetById(Id);
